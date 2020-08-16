@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: awsdescomplicada-com-tls
+spec:
+  secretName: awsdescomplicada-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: awsdescomplicada.com
+  dnsNames:
+    - awsdescomplicada.com
+    - www.awsdescomplicada.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - awsdescomplicada.com
+          - www.awsdescomplicada.com
+          
